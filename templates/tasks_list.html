@@ -2,6 +2,10 @@
 
 
 {% block content %}
+<form action="{% url 'task-list' %}">
+    <input type="text" name="search" placeholder="Search tasks...">
+    <button type="submit">Search</button>
+</form>
 {% for task in tasks %}
     <h1>{{task.title}}</h1>
     
