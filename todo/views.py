@@ -7,10 +7,17 @@ from .models import Task
 
 def TaskListView(request):
     tasks = Task.objects.all()
-    search_query = request.GET.get("search",'')
+    search_query = request.GET.get("search", "")
     if search_query:
         tasks = tasks.filter(title__icontains=search_query)
-    return render(request, "tasks_list.html", context={"tasks": tasks,'search_query': search_query,})
+    return render(
+        request,
+        "tasks_list.html",
+        context={
+            "tasks": tasks,
+            "search_query": search_query,
+        },
+    )
 
 
 def TaskCreateView(request):
